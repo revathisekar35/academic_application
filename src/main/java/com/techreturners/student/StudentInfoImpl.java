@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 
 import com.techreturners.school.School;
 
-
-
 public class StudentInfoImpl implements StudentInfo {
 	private char MAXGRADE = 'f';
 	private char MINGRADE = 'a';
@@ -49,25 +47,27 @@ public class StudentInfoImpl implements StudentInfo {
 	}
 
 	public String upgradeStudentGrade(int studentId) throws Exception {
-		Student stud =getStudentById(studentId);
+		Student stud = getStudentById(studentId);
 		char currentGrade = stud.getGrade();
 		if (currentGrade == MAXGRADE) {
 			throw new Exception("Cannot upgrade the student. Student already have a maximun grade ");
 		}
-		char upgrade =(char) (currentGrade - 1);
+		char upgrade = (char) (currentGrade - 1);
 		stud.setGrade(upgrade);
-		return stud.getFirstName()+" "+stud.getLastName()+" grade updated from "+currentGrade+" to "+upgrade;
+		return stud.getFirstName() + " " + stud.getLastName() + " grade updated from " + currentGrade + " to "
+				+ upgrade;
 	}
 
 	public String downGradeStudentGrade(int studentId) throws Exception {
-		Student stud =getStudentById(studentId);
+		Student stud = getStudentById(studentId);
 		char currentGrade = stud.getGrade();
 		if (currentGrade == MINGRADE) {
 			throw new Exception("Cannot downgrade the student. Student already have a minimum grade ");
 		}
-		char downGrade =(char) (currentGrade + 1);
+		char downGrade = (char) (currentGrade + 1);
 		stud.setGrade(downGrade);
-		return stud.getFirstName()+" "+stud.getLastName()+" grade updated from "+currentGrade+" to "+downGrade;
+		return stud.getFirstName() + " " + stud.getLastName() + " grade updated from " + currentGrade + " to "
+				+ downGrade;
 	}
 
 	public String updateStudentGroup(int studentId, int group) throws Exception {
@@ -77,7 +77,8 @@ public class StudentInfoImpl implements StudentInfo {
 			throw new Exception("Student group doesn't exit.");
 		}
 		stud.setGroup(group);
-		return stud.getFirstName()+" "+stud.getLastName()+" updated group from "+currentGroup+" to "+stud.getGroup();
+		return stud.getFirstName() + " " + stud.getLastName() + " updated group from " + currentGroup + " to "
+				+ stud.getGroup();
 	}
 
 	public String getStudentName(int studentId) {
@@ -96,14 +97,16 @@ public class StudentInfoImpl implements StudentInfo {
 		return student;
 	}
 
-	public Student updateStudentDetail(int studentId) {
+	public String updateStudentDetail(int studentId) {
 		Student student = getStudentById(studentId);
 		student.setMealType("Free");
 		student.setAge(10);
 		student.setContactNumber("123456789");
 		School school = new School();
 		student.setSchool(school);
-		return student;
+		return student.getFirstName() + " " + student.getLastName() + " updated information are:\n Mealtype :"
+				+ student.getMealType() + "\n Age: " + student.getAge() + "\n ContactNo: " + student.getContactNumber()
+				+ "\n";
 	}
 
 	public void deleteStudent(int studentId) {
