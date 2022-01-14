@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 import com.techreturners.school.School;
 
 public class StudentInfoImpl implements StudentInfo {
-	private char MAXGRADE = 'f';
-	private char MINGRADE = 'a';
+	private char MAXGRADE = 'a';
+	private char MINGRADE = 'f';
 	private int MAXGROUP = 1;
 	private int MINGROUP = 5;
 	List<Student> studentList = new ArrayList<Student>();

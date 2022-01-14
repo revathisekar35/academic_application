@@ -7,13 +7,15 @@ public class AppMain {
 
 	public static void main(String[] args) throws Exception {
 		/**
-		 * Student detils:
+		 *
+		 * Student Mock data details:
 		 * 
-		 * Student stud1 = new Student("Prish", "Log", 'a', 1, 11); Student stud2 = new
-		 * Student("July", "Dan", 'b', 2, 12); Student stud3 = new Student("Maya",
-		 * "Karan", 'c', 3, 13); Student stud4 = new Student("Jack", "Ken", 'd', 1, 14);
-		 * Student stud5 = new Student("Rev", "Sek", 'e', 4, 15); Student stud6 = new
-		 * Student("Nad", "Kan", 'f', 5, 16);
+		 * Student stud1 = new Student("Prish", "Log", 'a', 1, 11); 
+		 * Student stud2 = new Student("July", "Dan", 'b', 2, 12); 
+		 * Student stud3 = new Student("Maya","Karan", 'c', 3, 13); 
+		 * Student stud4 = new Student("Jack", "Ken", 'd', 1, 14);
+		 * Student stud5 = new Student("Rev", "Sek", 'e', 4, 15);
+		 * Student stud6 = new Student("Nad", "Kan", 'f', 5, 16);
 		 */
 
 		StudentInfoImpl student = new StudentInfoImpl();
