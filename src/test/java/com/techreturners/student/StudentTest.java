@@ -3,12 +3,14 @@ package com.techreturners.student;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class StudentTest {
 	/**
 	 *
-	 * Student Mock data details:
+	 * StudentS Mock data details:
 	 * 
 	 * Student stud1 = new Student("Prish", "Log", 'a', 1, 11); 
 	 * Student stud2 = new Student("July", "Dan", 'b', 2, 12); 
@@ -26,19 +28,22 @@ public class StudentTest {
 
 	}
 
+	@Rule
+	public ExpectedException expectedEx = ExpectedException.none();
+
 	@Test
 	public void getStudenGradeTest() {
-		assertEquals('f', student.getStudenGrade(16));
+		assertEquals('F', student.getStudenGrade(16));
 	}
 
 	@Test
 	public void upgradeStudentGradeTest() throws Exception {
-		assertEquals("Rev Sek grade updated from e to d", student.upgradeStudentGrade(15));
+		assertEquals("Rev Sek grade updated from E to D", student.upgradeStudentGrade(15));
 	}
 
 	@Test
 	public void downGradeStudentGradeTest() throws Exception {
-		assertEquals("Rev Sek grade updated from e to f", student.downGradeStudentGrade(15));
+		assertEquals("Rev Sek grade updated from E to F", student.downGradeStudentGrade(15));
 	}
 
 	@Test
@@ -54,8 +59,8 @@ public class StudentTest {
 
 	@Test
 	public void getStudentDetailTest() {
-		assertEquals("Student Full Name : Prish Log, Grade : a, Group : 1", student.getStudentDetail(11));
-		assertEquals("Student Full Name : Nad Kan, Grade : f, Group : 5", student.getStudentDetail(16));
+		assertEquals("Student Full Name : Prish Log, Grade : A, Group : 1", student.getStudentDetail(11));
+		assertEquals("Student Full Name : Nad Kan, Grade : F, Group : 5", student.getStudentDetail(16));
 	}
 
 	@Test
@@ -72,6 +77,27 @@ public class StudentTest {
 		student.deleteStudent(13);
 		assertEquals(5, student.studentList.size());
 
+	}
+
+	@Test
+	public void shouldThrowExceptionWhenTheStudentUpgradeFromMAXGrade() throws Exception {
+		expectedEx.expect(Exception.class);
+		expectedEx.expectMessage("Cannot upgrade the student. Student already have a maximum grade ");
+		student.upgradeStudentGrade(11);
+	}
+
+	@Test
+	public void shouldThrowExceptionWhenTheStudentDowngradeFromMINGrade() throws Exception {
+		expectedEx.expect(Exception.class);
+		expectedEx.expectMessage("Cannot downgrade the student. Student already have a minimum grade ");
+		student.downGradeStudentGrade(16);
+	}
+
+	@Test
+	public void shouldThrowExceptionWhenTheStudentUpdateWithInvalidGroup() throws Exception {
+		expectedEx.expect(Exception.class);
+		expectedEx.expectMessage("Student group doesn't exit.");
+		student.updateStudentGroup(16, 9);
 	}
 
 }

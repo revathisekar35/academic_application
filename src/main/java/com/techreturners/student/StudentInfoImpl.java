@@ -7,19 +7,19 @@ import java.util.stream.Collectors;
 import com.techreturners.school.School;
 
 public class StudentInfoImpl implements StudentInfo {
-	private char MAXGRADE = 'a';
-	private char MINGRADE = 'f';
-	private int MAXGROUP = 1;
-	private int MINGROUP = 5;
+	private char MAXGRADE = 'A';
+	private char MINGRADE = 'F';
+	private int MAXGROUP = 5;
+	private int MINGROUP = 1;
 	List<Student> studentList = new ArrayList<Student>();
 
 	public StudentInfoImpl() {
-		Student stud1 = new Student("Prish", "Log", 'a', 1, 11);
-		Student stud2 = new Student("July", "Dan", 'b', 2, 12);
-		Student stud3 = new Student("Maya", "Karan", 'c', 3, 13);
-		Student stud4 = new Student("Jack", "Ken", 'd', 1, 14);
-		Student stud5 = new Student("Rev", "Sek", 'e', 4, 15);
-		Student stud6 = new Student("Nad", "Kan", 'f', 5, 16);
+		Student stud1 = new Student("Prish", "Log", 'A', 1, 11);
+		Student stud2 = new Student("July", "Dan", 'B', 2, 12);
+		Student stud3 = new Student("Maya", "Karan", 'C', 3, 13);
+		Student stud4 = new Student("Jack", "Ken", 'D', 1, 14);
+		Student stud5 = new Student("Rev", "Sek", 'E', 4, 15);
+		Student stud6 = new Student("Nad", "Kan", 'F', 5, 16);
 		studentList.add(stud1);
 		studentList.add(stud2);
 		studentList.add(stud3);
@@ -28,6 +28,12 @@ public class StudentInfoImpl implements StudentInfo {
 		studentList.add(stud6);
 	}
 
+	/**
+	 * Get student object for given id
+	 * 
+	 * @param studentId
+	 * @return Student
+	 */
 	private Student getStudentById(int studentId) {
 		try {
 			Student student = studentList.stream().filter(n -> n.getId() == studentId).findAny().orElse(null);
@@ -42,15 +48,22 @@ public class StudentInfoImpl implements StudentInfo {
 		return null;
 	}
 
+	/**
+	 * Get student grade by given student id
+	 */
 	public char getStudenGrade(int studentId) {
 		return getStudentById(studentId).getGrade();
 	}
 
+	/**
+	 * This method used to upgrade the student if it reach MAX grade will throw
+	 * exception
+	 */
 	public String upgradeStudentGrade(int studentId) throws Exception {
 		Student stud = getStudentById(studentId);
 		char currentGrade = stud.getGrade();
 		if (currentGrade == MAXGRADE) {
-			throw new Exception("Cannot upgrade the student. Student already have a maximun grade ");
+			throw new Exception("Cannot upgrade the student. Student already have a maximum grade ");
 		}
 		char upgrade = (char) (currentGrade - 1);
 		stud.setGrade(upgrade);
@@ -58,6 +71,10 @@ public class StudentInfoImpl implements StudentInfo {
 				+ upgrade;
 	}
 
+	/**
+	 * This method used to downgrade the student if it reach MIN grade will throw
+	 * exception
+	 */
 	public String downGradeStudentGrade(int studentId) throws Exception {
 		Student stud = getStudentById(studentId);
 		char currentGrade = stud.getGrade();
@@ -70,10 +87,14 @@ public class StudentInfoImpl implements StudentInfo {
 				+ downGrade;
 	}
 
+	/***
+	 * This method used to update the student group. If group doen't exit it will
+	 * throw exception
+	 */
 	public String updateStudentGroup(int studentId, int group) throws Exception {
 		Student stud = getStudentById(studentId);
 		int currentGroup = stud.getGroup();
-		if (group == MAXGROUP || group == MINGROUP) {
+		if (group >= MAXGROUP || group <= MINGROUP) {
 			throw new Exception("Student group doesn't exit.");
 		}
 		stud.setGroup(group);
@@ -81,11 +102,17 @@ public class StudentInfoImpl implements StudentInfo {
 				+ stud.getGroup();
 	}
 
+	/**
+	 * This method will return the student fullname
+	 */
 	public String getStudentName(int studentId) {
 		Student student = getStudentById(studentId);
 		return "Student Full Name : " + student.getFirstName() + " " + student.getLastName();
 	}
 
+	/**
+	 * This method will return the student detail
+	 */
 	public String getStudentDetail(int studentId) {
 		Student student = getStudentById(studentId);
 		return "Student Full Name : " + student.getFirstName() + " " + student.getLastName() + ", Grade : "
@@ -109,6 +136,9 @@ public class StudentInfoImpl implements StudentInfo {
 				+ "\n";
 	}
 
+	/**
+	 * This method is used to delete the student .
+	 */
 	public void deleteStudent(int studentId) {
 		System.out.println("\nStudent list before deletion:\n");
 		studentList.stream().forEach(n -> {
