@@ -69,7 +69,7 @@ public class AppMain {
 		System.out.println("\n-------------------------");
 		System.out.println("Delete Details");
 		System.out.println("-------------------------\n");
-		student.deleteStudent(13);
+		student.removeStudent(13);
 	}
 
 }

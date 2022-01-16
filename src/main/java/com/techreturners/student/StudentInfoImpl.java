@@ -2,7 +2,6 @@ package com.techreturners.student;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.techreturners.school.School;
 
@@ -14,18 +13,12 @@ public class StudentInfoImpl implements StudentInfo {
 	List<Student> studentList = new ArrayList<Student>();
 
 	public StudentInfoImpl() {
-		Student stud1 = new Student("Prish", "Log", 'A', 1, 11);
-		Student stud2 = new Student("July", "Dan", 'B', 2, 12);
-		Student stud3 = new Student("Maya", "Karan", 'C', 3, 13);
-		Student stud4 = new Student("Jack", "Ken", 'D', 1, 14);
-		Student stud5 = new Student("Rev", "Sek", 'E', 4, 15);
-		Student stud6 = new Student("Nad", "Kan", 'F', 5, 16);
-		studentList.add(stud1);
-		studentList.add(stud2);
-		studentList.add(stud3);
-		studentList.add(stud4);
-		studentList.add(stud5);
-		studentList.add(stud6);
+		studentList.add(new Student("Prish", "Log", 'A', 1, 11));
+		studentList.add(new Student("July", "Dan", 'B', 2, 12));
+		studentList.add(new Student("Maya", "Karan", 'C', 3, 13));
+		studentList.add(new Student("Jack", "Ken", 'D', 1, 14));
+		studentList.add(new Student("Rev", "Sek", 'E', 4, 15));
+		studentList.add(new Student("Nad", "Kan", 'F', 5, 16));
 	}
 
 	/**
@@ -139,7 +132,7 @@ public class StudentInfoImpl implements StudentInfo {
 	/**
 	 * This method is used to delete the student .
 	 */
-	public void deleteStudent(int studentId) {
+	public void removeStudent(int studentId) {
 		System.out.println("\nStudent list before deletion:\n");
 		studentList.stream().forEach(n -> {
 			System.out.println("Remaining student Id's : " + n.getId());

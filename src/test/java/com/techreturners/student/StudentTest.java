@@ -73,8 +73,8 @@ public class StudentTest {
 	}
 
 	@Test
-	public void deleteStudentTest() throws Exception {
-		student.deleteStudent(13);
+	public void removeStudentTest() throws Exception {
+		student.removeStudent(13);
 		assertEquals(5, student.studentList.size());
 
 	}

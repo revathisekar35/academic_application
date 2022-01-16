@@ -18,6 +18,6 @@ public interface StudentInfo {
 
 	String updateStudentDetail(int studentId);
 
-	void deleteStudent(int studentId);
+	void removeStudent(int studentId);
 
 }
