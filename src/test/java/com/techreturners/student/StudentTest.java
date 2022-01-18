@@ -7,6 +7,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import com.techreturners.student.service.StudentInfoImpl;
+
 public class StudentTest {
 	/**
 	 *

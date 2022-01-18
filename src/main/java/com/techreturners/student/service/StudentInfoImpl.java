@@ -1,16 +1,21 @@
-package com.techreturners.student;
+package com.techreturners.student.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.techreturners.school.School;
+import com.techreturners.school.model.School;
+import com.techreturners.student.model.Student;
+import com.techreturners.student.model.StudentInfo;
+
+
+
 
 public class StudentInfoImpl implements StudentInfo {
 	private char MAXGRADE = 'A';
 	private char MINGRADE = 'F';
 	private int MAXGROUP = 5;
 	private int MINGROUP = 1;
-	List<Student> studentList = new ArrayList<Student>();
+	public List<Student> studentList = new ArrayList<Student>();
 
 	public StudentInfoImpl() {
 		studentList.add(new Student("Prish", "Log", 'A', 1, 11));

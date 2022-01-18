@@ -1,4 +1,4 @@
-package com.techreturners.school;
+package com.techreturners.school.model;
 
 public class School {
 	private int id; 

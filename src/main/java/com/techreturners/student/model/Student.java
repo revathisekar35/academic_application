@@ -1,6 +1,6 @@
-package com.techreturners.student;
+package com.techreturners.student.model;
 
-import com.techreturners.school.School;
+import com.techreturners.school.model.School;
 
 public class Student {
 	private int id;

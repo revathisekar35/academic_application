@@ -1,4 +1,4 @@
-package com.techreturners.student;
+package com.techreturners.student.model;
 
 public interface StudentInfo {
 
