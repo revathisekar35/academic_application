@@ -1,4 +1,4 @@
-# academic_application_new
+# Academic Application
 
 This is a Java, Maven Project for School.
 
