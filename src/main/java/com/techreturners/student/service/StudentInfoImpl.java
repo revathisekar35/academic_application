@@ -3,20 +3,28 @@ package com.techreturners.student.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.techreturners.school.model.School;
 import com.techreturners.student.model.Student;
 import com.techreturners.student.model.StudentInfo;
 
-
-
-
 public class StudentInfoImpl implements StudentInfo {
-	private char MAXGRADE = 'A';
-	private char MINGRADE = 'F';
-	private int MAXGROUP = 5;
-	private int MINGROUP = 1;
 	public List<Student> studentList = new ArrayList<Student>();
 
+	public enum Grade {
+		MAX_GRADE('A'), MIN_GRADE('F');
+		public char grade;
+		Grade(char grade){
+			this.grade = grade;
+		}
+
+	}
+
+	public enum Group{
+		MAX_GROUP(5),MIN_GROUP(1);
+		int group;
+		Group(int group){
+			this.group = group;
+		}
+	}
 	public StudentInfoImpl() {
 		studentList.add(new Student("Prish", "Log", 'A', 1, 11));
 		studentList.add(new Student("July", "Dan", 'B', 2, 12));
@@ -60,7 +68,7 @@ public class StudentInfoImpl implements StudentInfo {
 	public String upgradeStudentGrade(int studentId) throws Exception {
 		Student stud = getStudentById(studentId);
 		char currentGrade = stud.getGrade();
-		if (currentGrade == MAXGRADE) {
+		if (currentGrade == Grade.MAX_GRADE.grade) {
 			throw new Exception("Cannot upgrade the student. Student already have a maximum grade ");
 		}
 		char upgrade = (char) (currentGrade - 1);
@@ -76,7 +84,7 @@ public class StudentInfoImpl implements StudentInfo {
 	public String downGradeStudentGrade(int studentId) throws Exception {
 		Student stud = getStudentById(studentId);
 		char currentGrade = stud.getGrade();
-		if (currentGrade == MINGRADE) {
+		if (currentGrade == Grade.MIN_GRADE.grade) {
 			throw new Exception("Cannot downgrade the student. Student already have a minimum grade ");
 		}
 		char downGrade = (char) (currentGrade + 1);
@@ -92,7 +100,7 @@ public class StudentInfoImpl implements StudentInfo {
 	public String updateStudentGroup(int studentId, int group) throws Exception {
 		Student stud = getStudentById(studentId);
 		int currentGroup = stud.getGroup();
-		if (group >= MAXGROUP || group <= MINGROUP) {
+		if (group >= Group.MAX_GROUP.group || group <= Group.MIN_GROUP.group) {
 			throw new Exception("Student group doesn't exit.");
 		}
 		stud.setGroup(group);
@@ -120,18 +128,6 @@ public class StudentInfoImpl implements StudentInfo {
 	public Student editStudentDetail(int studentId) {
 		Student student = getStudentById(studentId);
 		return student;
-	}
-
-	public String updateStudentDetail(int studentId) {
-		Student student = getStudentById(studentId);
-		student.setMealType("Free");
-		student.setAge(10);
-		student.setContactNumber("123456789");
-		School school = new School();
-		student.setSchool(school);
-		return student.getFirstName() + " " + student.getLastName() + " updated information are:\n Mealtype :"
-				+ student.getMealType() + "\n Age: " + student.getAge() + "\n ContactNo: " + student.getContactNumber()
-				+ "\n";
 	}
 
 	/**

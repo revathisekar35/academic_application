@@ -65,14 +65,6 @@ public class StudentTest {
 		assertEquals("Student Full Name : Nad Kan, Grade : F, Group : 5", student.getStudentDetail(16));
 	}
 
-	@Test
-	public void updateStudentDetailTest() throws Exception {
-		assertEquals("Nad Kan updated information are:\n Mealtype :Free\n Age: 10\n ContactNo: 123456789\n",
-				student.updateStudentDetail(16));
-		assertEquals("Prish Log updated information are:\n Mealtype :Free\n Age: 10\n ContactNo: 123456789\n",
-				student.updateStudentDetail(11));
-
-	}
 
 	@Test
 	public void removeStudentTest() throws Exception {

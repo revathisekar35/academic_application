@@ -16,8 +16,6 @@ public interface StudentInfo {
 
 	Student editStudentDetail(int studentId);
 
-	String updateStudentDetail(int studentId);
-
 	void removeStudent(int studentId);
 
 }
