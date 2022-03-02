@@ -18,7 +18,6 @@ School can do,
   
   This Project also contain Junit Test cases to check the code working status.
   
- mvn test command is used to test Testmethod.
- 
+ Use mvn test to Test all JUnit case
 
 
